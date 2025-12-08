@@ -1,13 +1,6 @@
 // src/app/api/hello/route.ts
 import { NextRequest, NextResponse } from "next/server";
 
-type ResponseData = {
-  message: string;
-  method: string;
-  timestamp: string;
-  data?: unknown;
-};
-
 export async function GET(request: NextRequest) {
   return NextResponse.json({
     message: "Hello World! This is a GET request",

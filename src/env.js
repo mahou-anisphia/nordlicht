@@ -13,7 +13,13 @@ export const env = createEnv({
         : z.string().optional(),
     AUTH_DISCORD_ID: z.string(),
     AUTH_DISCORD_SECRET: z.string(),
+    RESEND_API_KEY: z.string(),
+    RESEND_FROM_EMAIL: z.string().email(),
+    RESEND_FROM_NAME: z.string().optional(),
     DATABASE_URL: z.string().url(),
+    CLAUDE_API: z.string(),
+    CLAUDE_HAIKU_MODEL: z.string(),
+    CLAUDE_SONNET_MODEL: z.string().optional(),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
@@ -38,6 +44,12 @@ export const env = createEnv({
     AUTH_DISCORD_SECRET: process.env.AUTH_DISCORD_SECRET,
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
+    RESEND_FROM_EMAIL: process.env.RESEND_FROM_EMAIL,
+    RESEND_FROM_NAME: process.env.RESEND_FROM_NAME,
+    CLAUDE_API: process.env.CLAUDE_API,
+    CLAUDE_HAIKU_MODEL: process.env.CLAUDE_HAIKU_MODEL,
+    CLAUDE_SONNET_MODEL: process.env.CLAUDE_SONNET_MODEL,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
