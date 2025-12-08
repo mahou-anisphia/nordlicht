@@ -5,8 +5,14 @@ import { env } from "~/env";
 
 /**
  * Resend client instance configured with API key from environment
+ * Lazily initialized to avoid build-time errors when env vars aren't available
  */
-const resend = new Resend(env.RESEND_API_KEY);
+let resend: Resend | null = null;
+
+function getResendClient(): Resend {
+  resend ??= new Resend(env.RESEND_API_KEY);
+  return resend;
+}
 
 /**
  * Email recipient configuration
@@ -160,8 +166,9 @@ export async function sendMail(
   if (cc) emailPayload.cc = formatRecipients(cc);
   if (bcc) emailPayload.bcc = formatRecipients(bcc);
 
+  const client = getResendClient();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { data, error } = await resend.emails.send(emailPayload as any);
+  const { data, error } = await client.emails.send(emailPayload as any);
 
   if (error) {
     throw new Error(`Failed to send email: ${error.message}`);
