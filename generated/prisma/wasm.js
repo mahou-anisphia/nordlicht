@@ -183,7 +183,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\magicology_basement\\nordlicht\\generated\\prisma",
+      "value": "/mnt/d/magicology_basement/nordlicht/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -192,12 +192,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "debian-openssl-3.0.x",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\magicology_basement\\nordlicht\\prisma\\schema.prisma",
+    "sourceFilePath": "/mnt/d/magicology_basement/nordlicht/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
