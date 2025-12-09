@@ -64,6 +64,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   posts         Post[]
+  goals         Goal[]
 }
 
 model VerificationToken {
@@ -72,4 +73,19 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Goal {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  startDate  DateTime @default(now())
+  targetDate DateTime
+  goalText   String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
 }
